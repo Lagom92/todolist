@@ -1,0 +1,66 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    {% bootstrap_css %}
+</head>
+<body>
+    
+    <ul class="nav nav-tabs">
+        {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'todos:create' %}">글 작성</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'todos:list' %}">글 보기</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{user}}님이 로그인</a>
+      </li>
+      <!--<p>{{user}}님이 로그인 하셨습니다.</p>-->
+      {% else %}
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+            </li>
+            <!--{{user}}-->
+        {% endif %}
+    </ul>
+    
+
+    <!--<ul>-->
+    <!--    {% if user.is_authenticated %}-->
+        
+    <!--    <li><a href="{% url 'accounts:logout' %}">로그아웃</a></li>-->
+    <!--    <li><a href="{% url 'todos:create' %}">글 작성</a></li>-->
+    <!--    <li><a href="{% url 'todos:list' %}">글 보기</a></li>-->
+    <!--    <p>로그인 ing </p>-->
+    <!--    <p>{{user}}님이 로그인 하셨습니다.</p>-->
+    <!--    {% else %}-->
+    <!--        {{user}}-->
+    <!--        <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>-->
+    <!--        <li><a href="{% url 'accounts:login' %}">로그인</a></li>-->
+    <!--    {% endif %}-->
+            
+
+    <!--</ul>-->
+    
+    {% block bb %}
+    {% endblock %}
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+</body>
+</html>

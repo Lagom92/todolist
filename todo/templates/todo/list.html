@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block bb %}
+    <div class="container">
+        <h1 class="text-center">List page</h1>
+        {% for todo in todos %}
+            <h3>{{todo.title}}</h3>
+            <p>{{todo.user}}</p>
+            <hr>
+        
+        {% endfor %}
+        
+        
+    </div>
+    
+
+{% endblock %}
